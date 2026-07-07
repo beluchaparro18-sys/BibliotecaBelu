@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Belu</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">Colección viva</p>
+        <h1>Biblioteca Belu</h1>
+        <p class="hero__text">
+          Organiza miles de libros con portadas, PDFs, descripciones y estados de lectura en una sola experiencia cálida y elegante.
+        </p>
+        <div class="hero__actions">
+          <button id="openAdminBtn" class="btn btn--primary">Panel de administración</button>
+          <button id="openFormBtn" class="btn btn--secondary">Agregar libro</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="controls">
+        <label class="searchbar" for="searchInput">
+          <span>🔎</span>
+          <input id="searchInput" type="text" placeholder="Buscar por nombre, autor o género" />
+        </label>
+        <div class="summary">
+          <span id="bookCount">0 libros</span>
+          <span class="pill">Administración sencilla</span>
+        </div>
+      </section>
+
+      <section id="booksGrid" class="books-grid" aria-live="polite"></section>
+    </main>
+
+    <div id="adminModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <div class="modal__card">
+        <button id="closeAdminModal" class="modal__close" aria-label="Cerrar">×</button>
+        <h2 id="adminTitle">Agregar nuevo libro</h2>
+        <form id="bookForm" class="form">
+          <label>
+            Nombre del libro
+            <input id="title" name="title" type="text" required />
+          </label>
+          <label>
+            Autor
+            <input id="author" name="author" type="text" required />
+          </label>
+          <label>
+            Género
+            <input id="genre" name="genre" type="text" required />
+          </label>
+          <label>
+            Estado de lectura
+            <select id="status" name="status" required>
+              <option value="Sin leer">Sin leer</option>
+              <option value="En proceso">En proceso</option>
+              <option value="Leído">Leído</option>
+            </select>
+          </label>
+          <label>
+            Sinopsis
+            <textarea id="synopsis" name="synopsis" rows="4" required></textarea>
+          </label>
+          <label>
+            Portada del libro
+            <input id="cover" name="cover" type="file" accept="image/*" />
+          </label>
+          <label>
+            PDF del libro
+            <input id="pdf" name="pdf" type="file" accept="application/pdf" />
+          </label>
+          <button type="submit" class="btn btn--primary btn--full">Guardar libro</button>
+        </form>
+        <p id="formMessage" class="form__message" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div id="detailModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal__card modal__card--wide">
+        <button id="closeDetailModal" class="modal__close" aria-label="Cerrar">×</button>
+        <div id="detailContent" class="detail-content"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
